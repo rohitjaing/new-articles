@@ -13,6 +13,7 @@
   <p>
     <strong>Commenter:</strong>
     <%= comment.commenter %>
+    <%= comment.body %>
   </p>
 
   <p>
@@ -26,6 +27,7 @@
     <%= form.label :commenter %><br>
     <%= form.text_field :commenter %>
   </p>
+  
   <p>
     <%= form.label :body %><br>
     <%= form.text_area :body %>
@@ -34,13 +36,17 @@
   <p>
     <%= form.submit %>
   </p>
-  <%= button_to "Like" , (@post), method: :post %>
+  <%#= button_to "Like" , (@post), method: :post %>
 
-  <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+  <p>
+    <%= @post.likes.count %> 
+    <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%>
+    </p>
   
-  
-   <%#= button_to 'Like', post_likes_path(@post), method: :post %>
-  
+  <div>
+     
+   <%= link_to 'Like', like_like_path(@post) %>
+   <%= link_to 'Unlike', unlike_like_path(@post) , method: :delete %>
+  </div>
 <% end %>
-
-   
+ 
